@@ -4,10 +4,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.ptp.phamtanphat.youtubesearch1903.Adapter.YoutubeAdapter;
@@ -46,6 +48,12 @@ public class MainActivity extends AppCompatActivity {
                 String tukhoa= edtSearch.getText().toString();
                 tukhoa = tukhoa.replace(" " ,"%20");
                 DocDulieu(tukhoa);
+            }
+        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this, mangitem.get(position).getId().getVideoId() + "", Toast.LENGTH_SHORT).show();
             }
         });
 
