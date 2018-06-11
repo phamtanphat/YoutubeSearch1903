@@ -27,6 +27,7 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
     <ListView
+        android:id="@+id/listviewYoutube"
         android:padding="5dp"
         android:layout_below="@id/linearlayout"
         android:layout_width="match_parent"
