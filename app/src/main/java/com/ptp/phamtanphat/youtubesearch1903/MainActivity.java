@@ -3,6 +3,7 @@ package com.ptp.phamtanphat.youtubesearch1903;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,12 +38,22 @@ public class MainActivity extends AppCompatActivity {
         edtSearch = findViewById(R.id.edittextSearch);
         btnSearch = findViewById(R.id.buttonSearch);
         listView = findViewById(R.id.listviewYoutube);
+        DocDulieu("Phim");
 
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tukhoa= edtSearch.getText().toString();
+                tukhoa = tukhoa.replace(" " ,"%20");
+                DocDulieu(tukhoa);
+            }
+        });
 
-
+    }
+    public void DocDulieu(String tukhoa){
         DataAPI dataAPI = RetrofitAPI.getDataAPI();
         Call<ModelData> callback = dataAPI.getResult("snippet",
-                "phim",
+                 tukhoa,
                 "50",
                 "video",
                 "AIzaSyDw1xWgw-tzAEnKhPUpCPEpNXTwbs3e6hY");
